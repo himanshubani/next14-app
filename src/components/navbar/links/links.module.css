@@ -1,0 +1,51 @@
+.links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.logout {
+  padding: 10px;
+  border-radius: 20px;
+  font-weight: bold;
+  border-style: none;
+}
+
+.logout:hover {
+  background-color: #ff0000;
+  color: white;
+  cursor: pointer;
+}
+
+.menuButton,
+.mobileLinks {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .links {
+    display: none;
+  }
+  .mobileLinks {
+    position: absolute;
+    top: 100px;
+    right: 0;
+    background-color: var(--bg);
+    width: 50%;
+    height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  }
+  .menuButton {
+    display: block;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+}
