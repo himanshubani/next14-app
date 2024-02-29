@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./singlePost.module.css";
+import PostUser from "@/components/postUser/postUser";
 // import PostUser from "@/components/postUser/postUser";
 // import { Suspense } from "react";
 // import { getPost } from "@/lib/data";
@@ -45,10 +46,7 @@ const SinglePostPage = async ({ params }) => {
         <h1 className={styles.title}>{post.title}</h1>
         <div className={styles.detail}>
             <Image className={styles.avatar} src='/nigga.webp' width={50} height={50} alt=""/>
-            <div className={styles.detailText}>
-                <span className={styles.detailTitle}>Author</span>
-                <span className={styles.detailValue}>Terry Jefferson</span>
-            </div>
+            <PostUser userId={post.userId}/>
             <div className={styles.detailText}>
                 <span className={styles.detailTitle}>Published</span>
                 <span className={styles.detailValue}>29.Feb.2024</span>
