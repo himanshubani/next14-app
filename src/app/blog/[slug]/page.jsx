@@ -6,7 +6,7 @@ import styles from "./singlePost.module.css";
 
 // FETCH DATA WITH AN API
 const getData = async (slug) => {
-  const res = await fetch(`http://localhost:3000/api/blog/${slug}`);
+  const res = await fetch(`http://jsonplaceholder.typicode.com/posts/${slug}`);
 
   if (!res.ok) {
     throw new Error("Something went wrong");
@@ -15,16 +15,16 @@ const getData = async (slug) => {
   return res.json();
 };
 
-export const generateMetadata = async ({ params }) => {
-  const { slug } = params;
+// export const generateMetadata = async ({ params }) => {
+//   const { slug } = params;
 
-  const post = await getPost(slug);
+//   const post = await getPost(slug);
 
-  return {
-    title: post.title,
-    description: post.desc,
-  };
-};
+//   return {
+//     title: post.title,
+//     description: post.desc,
+//   };
+// };
 
 const SinglePostPage = async ({ params }) => {
   const { slug } = params;
@@ -37,27 +37,24 @@ const SinglePostPage = async ({ params }) => {
 
   return (
     <div className={styles.container}>
-      {post.img && (
-        <div className={styles.imgContainer}>
-          <Image src={post.img} alt="" fill className={styles.img} />
-        </div>
-      )}
+      <div className={styles.imgContainer}>
+        <Image src="/nigga.webp" alt="" fill className={styles.img} />
+      </div>
+
       <div className={styles.textContainer}>
         <h1 className={styles.title}>{post.title}</h1>
         <div className={styles.detail}>
-          {post && (
-            <Suspense fallback={<div>Loading...</div>}>
-              <PostUser userId={post.userId} />
-            </Suspense>
-          )}
-          <div className={styles.detailText}>
-            <span className={styles.detailTitle}>Published</span>
-            <span className={styles.detailValue}>
-              {post.createdAt.toString().slice(4, 16)}
-            </span>
-          </div>
+            <Image className={styles.avatar} src='/nigga.webp' width={50} height={50} alt=""/>
+            <div className={styles.detailText}>
+                <span className={styles.detailTitle}>Author</span>
+                <span className={styles.detailValue}>Terry Jefferson</span>
+            </div>
+            <div className={styles.detailText}>
+                <span className={styles.detailTitle}>Published</span>
+                <span className={styles.detailValue}>29.Feb.2024</span>
+            </div>
         </div>
-        <div className={styles.content}>{post.desc}</div>
+        <div className={styles.content}>{post.body}</div>
       </div>
     </div>
   );
